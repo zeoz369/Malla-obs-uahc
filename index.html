@@ -2,28 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Malla Universitaria</title>
-  <style>
-    body { font-family: sans-serif; padding: 20px; }
-    .asignatura {
-      border: 1px solid #aaa;
-      border-radius: 10px;
-      padding: 10px;
-      margin: 5px;
-      display: inline-block;
-      cursor: pointer;
-      background-color: #f0f0f0;
-    }
-    .asignatura:hover {
-      background-color: #d9f4ff;
-    }
-    .info {
-      display: none;
-      margin-top: 5px;
-      font-size: 0.9em;
-      color: #444;
-    }
-  </style>
+  <title>Malla Interactiva</title>
+  <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
@@ -49,12 +29,7 @@
     </div>
   </div>
 
-  <script>
-    function toggleInfo(id) {
-      const info = document.getElementById(id);
-      info.style.display = info.style.display === 'block' ? 'none' : 'block';
-    }
-  </script>
+  <script src="script.js"></script>
 
 </body>
 </html>
