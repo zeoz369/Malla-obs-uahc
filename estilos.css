@@ -1,0 +1,27 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fdfdfd;
+  margin: 20px;
+}
+h1 {
+  color: #444;
+}
+.asignatura {
+  border: 1px solid #aaa;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px;
+  display: inline-block;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.asignatura:hover {
+  background-color: #cceeff;
+}
+.info {
+  display: none;
+  font-size: 0.9em;
+  color: #444;
+  margin-top: 5px;
+}
