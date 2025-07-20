@@ -27,4 +27,105 @@ h1 {
   background: #fff0f7;
   padding: 15px;
   border-radius: 15px;
-  box-shadow: 0 4px 8px rgba
+  box-shadow: 0 4px 8px rgba(214, 51, 132, 0.15);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.semestre h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #b02363;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+/* Botones */
+.ramo {
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  color: #333;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: left;
+}
+
+/* Estados */
+.ramo:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Aprobado */
+.ramo.aprobado {
+  background-color: #ff4081 !important;
+  color: white;
+  text-decoration: line-through;
+}
+
+/* Colores por línea de formación */
+.ramo[data-linea="Bases Científicas para la salud"] {
+  background-color: #fcde98;
+}
+
+.ramo[data-linea="Gestión de Matronería en el Curso de la Vida"] {
+  background-color: #f6f77c;
+}
+
+.ramo[data-linea="Promoción de la Salud Sexual y Reproductiva"] {
+  background-color: #a1ff80;
+}
+
+.ramo[data-linea="Investigación en el Ámbito Disciplinar"] {
+  background-color: #d2fffb;
+}
+
+.ramo[data-linea="Prácticas Curriculares y Profesionales"] {
+  background-color: #ffd7f0;
+}
+
+.ramo[data-linea="Certificado en Salud con Enfoque Territorial"] {
+  background-color: #f1baff;
+}
+
+.ramo[data-linea="Certificado Gestión y Liderazgo en Matronería"] {
+  background-color: #ff37b6;
+  color: white;
+}
+
+.ramo[data-linea="Certificado Profesionalízate"] {
+  background-color: #9aff00;
+}
+
+/* Leyenda */
+.leyenda {
+  margin-top: 40px;
+  text-align: left;
+  display: inline-block;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(214, 51, 132, 0.3);
+  max-width: 800px;
+}
+
+.leyenda ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.leyenda li {
+  padding: 8px 15px;
+  border-radius: 8px;
+  color: black;
+  font-weight: bold;
+  flex: 1 1 calc(25% - 10px);
+  text-align: center;
+}
