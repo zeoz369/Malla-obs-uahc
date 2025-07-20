@@ -42,15 +42,16 @@ h1 {
 
 /* Botones */
 .ramo {
-  border: none;
+  border: 3px solid transparent;
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 8px;
   cursor: pointer;
   color: #333;
   font-weight: 600;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: #ffe6f0; /* Fondo rosa claro para todos */
   text-align: left;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 /* Estados */
@@ -61,43 +62,45 @@ h1 {
 
 /* Aprobado */
 .ramo.aprobado {
-  background-color: #ff4081 !important;
+  background-color: #d63384 !important; /* Rosa fuerte */
   color: white;
   text-decoration: line-through;
+  border-color: #b02363 !important;
 }
 
-/* Colores por línea de formación */
+/* Bordes por línea de formación */
+
 .ramo[data-linea="Bases Científicas para la salud"] {
-  background-color: #fcde98;
+  border-color: #fcde98;
 }
 
 .ramo[data-linea="Gestión de Matronería en el Curso de la Vida"] {
-  background-color: #f6f77c;
+  border-color: #f6f77c;
 }
 
 .ramo[data-linea="Promoción de la Salud Sexual y Reproductiva"] {
-  background-color: #a1ff80;
+  border-color: #a1ff80;
 }
 
 .ramo[data-linea="Investigación en el Ámbito Disciplinar"] {
-  background-color: #d2fffb;
+  border-color: #d2fffb;
 }
 
 .ramo[data-linea="Prácticas Curriculares y Profesionales"] {
-  background-color: #ffd7f0;
+  border-color: #ffd7f0;
 }
 
 .ramo[data-linea="Certificado en Salud con Enfoque Territorial"] {
-  background-color: #f1baff;
+  border-color: #f1baff;
 }
 
 .ramo[data-linea="Certificado Gestión y Liderazgo en Matronería"] {
-  background-color: #ff37b6;
-  color: white;
+  border-color: #ff37b6;
+  color: #333;
 }
 
 .ramo[data-linea="Certificado Profesionalízate"] {
-  background-color: #9aff00;
+  border-color: #9aff00;
 }
 
 /* Leyenda */
