@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
           return target && target.classList.contains("aprobado");
         });
 
-        if (aprobados) {
+        if (aprobados && !b.classList.contains("aprobado")) {
           b.disabled = false;
         }
       });
