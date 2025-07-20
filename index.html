@@ -2,34 +2,63 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Malla Interactiva</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malla Obstetricia UAHC</title>
   <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
+  <h1>Malla de Obstetricia y Matronería - UAHC</h1>
+  <div class="malla">
+    <!-- Primer Semestre -->
+    <button class="ramo" data-id="intro_matroneria" data-prerequisitos="">Introducción a la Matronería y la Atención Humanizada</button>
+    <button class="ramo" data-id="anat_gen" data-prerequisitos="">Anatomía general</button>
+    <button class="ramo" data-id="bio_cel" data-prerequisitos="">Biología Celular y Molecular</button>
+    <button class="ramo" data-id="quimica" data-prerequisitos="">Química General</button>
+    <button class="ramo" data-id="antro_salud" data-prerequisitos="">Antropología de la Salud</button>
+    <button class="ramo" data-id="eva1" data-prerequisitos="">Estrategias para la Vida Académica I</button>
 
-  <h1>Malla Interactiva - Obstetricia</h1>
+    <!-- Segundo Semestre -->
+    <button class="ramo" data-id="anat_esp" data-prerequisitos="anat_gen">Anatomía Específica Gineco-obstétrica y Neonatal</button>
+    <button class="ramo" data-id="micro" data-prerequisitos="bio_cel">Microbiología Aplicada y Parasitología</button>
+    <button class="ramo" data-id="emb_histo" data-prerequisitos="">Embriología Humana e Histología</button>
+    <button class="ramo" data-id="psico_general" data-prerequisitos="">Psicología General en el Curso de la Vida</button>
+    <button class="ramo" data-id="bioquimica" data-prerequisitos="quimica">Bioquímica</button>
+    <button class="ramo" data-id="salud_pub" data-prerequisitos="">Salud Pública y Epidemiología</button>
+    <button class="ramo" data-id="ingles1" data-prerequisitos="">Inglés I</button>
+    <button class="ramo" data-id="eva2" data-prerequisitos="eva1">Estrategias para la Vida Académica II</button>
 
-  <div class="asignatura" onclick="toggleInfo('bioetica')">
-    Bioética
-    <div id="bioetica" class="info">
-      Créditos: 4<br>
-      Requisito: Ninguno<br>
-      Semestre: 2°<br>
-      Contenidos: Principios éticos en salud, autonomía, beneficencia.
-    </div>
+    <!-- Tercer Semestre -->
+    <button class="ramo" data-id="fisio" data-prerequisitos="anat_gen,bioquimica">Fisiología</button>
+    <button class="ramo" data-id="matron_bioetica" data-prerequisitos="intro_matroneria">Matronería, Bioética y Enfoque de Derechos</button>
+    <button class="ramo" data-id="soc_salud" data-prerequisitos="antro_salud">Sociología de la Salud</button>
+    <button class="ramo" data-id="com_salud" data-prerequisitos="">Comunicación en Salud</button>
+    <button class="ramo" data-id="salud_indigena" data-prerequisitos="">Salud Intercultural y Pueblos Indígenas</button>
+    <button class="ramo" data-id="ingles2" data-prerequisitos="ingles1">Inglés II</button>
+
+    <!-- Cuarto Semestre -->
+    <button class="ramo" data-id="farmacologia" data-prerequisitos="fisio">Farmacología</button>
+    <button class="ramo" data-id="investigacion1" data-prerequisitos="">Fundamentos de Investigación</button>
+    <button class="ramo" data-id="salud_comunitaria" data-prerequisitos="salud_pub">Salud Comunitaria</button>
+    <button class="ramo" data-id="prim_nivel" data-prerequisitos="salud_pub">Atención Primaria de Salud y Nivel de Atención</button>
+    <button class="ramo" data-id="certif_gest" data-prerequisitos="">Certificado Gestión y Liderazgo I</button>
+
+    <!-- Puedes seguir agregando más semestres y prácticas aquí -->
   </div>
 
-  <div class="asignatura" onclick="toggleInfo('fisiologia')">
-    Fisiología
-    <div id="fisiologia" class="info">
-      Créditos: 5<br>
-      Requisito: Anatomía<br>
-      Semestre: 2°<br>
-      Contenidos: Funcionamiento del cuerpo humano.
-    </div>
+  <div class="leyenda">
+    <h2>Líneas de formación (colores)</h2>
+    <ul>
+      <li style="background:#fcde98">Bases Científicas para la salud</li>
+      <li style="background:#f6f77c">Gestión de Matronería en el Curso de la Vida</li>
+      <li style="background:#a1ff80">Promoción de la Salud Sexual y Reproductiva</li>
+      <li style="background:#d2fffb">Investigación en el Ámbito Disciplinar</li>
+      <li style="background:#ffd7f0">Prácticas Curriculares y Profesionales</li>
+      <li style="background:#f1baff">Certificado en Salud con Enfoque Territorial</li>
+      <li style="background:#ff37b6">Certificado Gestión y Liderazgo en Matronería</li>
+      <li style="background:#9aff00">Certificado Profesionalízate</li>
+    </ul>
   </div>
 
   <script src="script.js"></script>
-
 </body>
 </html>
