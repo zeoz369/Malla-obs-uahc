@@ -3,59 +3,28 @@ body {
   background: #ffe6f0;
   padding: 20px;
   text-align: center;
+  margin: 0;
 }
 
 h1 {
   color: #d63384;
+  margin-bottom: 20px;
 }
 
 .malla {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  gap: 20px;
   justify-content: center;
-  margin-top: 20px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 20px;
 }
 
-.ramo {
-  background-color: #ffcce5;
-  border: none;
-  padding: 10px;
-  min-width: 200px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.ramo:disabled {
-  background-color: #ffdce5;
-  color: #aaa;
-  cursor: not-allowed;
-}
-
-.ramo.aprobado {
-  background-color: #ff69b4 !important;
-  color: white;
-  text-decoration: line-through;
-}
-
-.leyenda {
-  margin-top: 40px;
-  text-align: left;
-  display: inline-block;
-  background: white;
-  padding: 10px;
-  border-radius: 10px;
-}
-
-.leyenda ul {
-  list-style: none;
-  padding: 0;
-}
-
-.leyenda li {
-  padding: 5px;
-  margin-bottom: 5px;
-  border-radius: 5px;
-  color: black;
-}
+.semestre {
+  display: flex;
+  flex-direction: column;
+  min-width: 280px;
+  background: #fff0f7;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba
