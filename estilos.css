@@ -54,7 +54,6 @@ h1 {
   cursor: not-allowed;
 }
 
-/* Bordes por línea de formación: mantén los colores existentes */
 .color-formacion {
   border-color: #6ec1e4;
 }
