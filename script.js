@@ -124,5 +124,54 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Evento click para aprobar o desaprobar ramos si están desbloqueados
+  document.addEventListener("DOMContentLoaded", () => {
+  const cursos = [
+    // ... (todo el array que ya escribiste, lo mantienes igual)
+  ];
+
+  const contenedoresSemestres = {};
+  for (let i = 1; i <= 10; i++) {
+    contenedoresSemestres[i] = document.getElementById(`sem-${i}`);
+  }
+
+  cursos.forEach(curso => {
+    const div = document.createElement("div");
+    div.classList.add("curso", `linea-${curso.linea}`);
+    div.textContent = curso.nombre;
+    div.dataset.id = curso.id;
+    div.dataset.prerequisitos = curso.prerequisitos.join(",");
+    div.dataset.aprobado = "false";
+    div.classList.add("bloqueado");
+    contenedoresSemestres[curso.semestre].appendChild(div);
+  });
+
+  function actualizarEstado() {
+    document.querySelectorAll(".curso").forEach(div => {
+      const prereqs = div.dataset.prerequisitos.split(",").filter(Boolean);
+      const aprobados = prereqs.every(pr => {
+        const el = document.querySelector(`[data-id="${pr}"]`);
+        return el && el.classList.contains("aprobado");
+      });
+      if (prereqs.length === 0 || aprobados) {
+        div.classList.remove("bloqueado");
+      } else {
+        div.classList.add("bloqueado");
+        if (div.classList.contains("aprobado")) {
+          div.classList.remove("aprobado");
+          div.dataset.aprobado = "false";
+        }
+      }
+    });
+  }
+
   document.querySelector(".contenedor-semestres").addEventListener("click", (e) => {
-    if (e.target.classList.contains("curso") && !e
+    const curso = e.target;
+    if (curso.classList.contains("curso") && !curso.classList.contains("bloqueado")) {
+      curso.classList.toggle("aprobado");
+      curso.dataset.aprobado = curso.classList.contains("aprobado") ? "true" : "false";
+      actualizarEstado();
+    }
+  });
+
+  actualizarEstado();
+});
