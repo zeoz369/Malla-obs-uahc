@@ -52,7 +52,7 @@ h1 {
   font-size: 0.9rem;
   cursor: pointer;
   text-align: center;
-  transition: 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
   user-select: none;
   margin-bottom: 10px;
   width: 100%;
@@ -111,4 +111,12 @@ h1 {
 
 .linea-Basica {
   border-color: #999900;
+}
+/* Scroll horizontal más visible */
+.contenedor-semestres::-webkit-scrollbar {
+  height: 8px;
+}
+.contenedor-semestres::-webkit-scrollbar-thumb {
+  background-color: #b30059;
+  border-radius: 10px;
 }
