@@ -9,15 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
     { id: "OBG301", nombre: "Obstetricia I", linea: "profesional", prereqs: ["BIO101", "QUI102"] },
     { id: "OBG302", nombre: "Obstetricia II", linea: "profesional", prereqs: ["OBG301"] },
     { id: "NUT401", nombre: "Nutrición", linea: "disciplinar", prereqs: ["BIO101"] },
-    { id: "SAL501", nombre: "Salud Pública", linea: "profesional", prereqs: ["PSI201", "ANT202"] }
-    // Agrega aquí los demás cursos reales si deseas
+    { id: "SAL501", nombre: "Salud Pública", linea: "profesional", prereqs: ["PSI201", "ANT202"] },
+    // Aquí puedes seguir agregando todos los demás cursos...
   ];
 
   const malla = document.getElementById("malla");
 
   cursos.forEach(curso => {
     const div = document.createElement("div");
-    div.classList.add("curso", `color-${curso.linea}`);
+    div.classList.add("curso", `color-${curso.linea}`, "bloqueado");
     div.dataset.id = curso.id;
     div.dataset.prerequisitos = curso.prereqs.join(",");
     div.textContent = curso.nombre;
