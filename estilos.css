@@ -1,3 +1,4 @@
+/* Base */
 body {
   font-family: Arial, sans-serif;
   background-color: #ffe4f0;
@@ -9,30 +10,58 @@ body {
 h1 {
   text-align: center;
   color: #b30059;
+  margin-bottom: 20px;
 }
 
-.contenedor-malla {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  gap: 10px;
-  padding: 20px;
+/* Contenedor principal que contiene los semestres */
+.contenedor-semestres {
+  display: flex;
   overflow-x: auto;
+  padding-bottom: 20px;
+  gap: 12px;
 }
 
+/* Cada columna de semestre */
+.semestre {
+  background-color: #ffd6e8;
+  border-radius: 8px;
+  padding: 12px 8px 16px 8px;
+  min-width: 200px;
+  flex-shrink: 0;
+  box-shadow: 0 3px 8px rgba(179, 0, 89, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Título del semestre */
+.semestre h2 {
+  font-size: 1.25rem;
+  color: #b30059;
+  margin-bottom: 14px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Cursos */
 .curso {
   background-color: #f9c4d2;
   border: 3px solid gray;
   border-radius: 10px;
-  padding: 8px;
+  padding: 10px 8px;
   font-size: 0.9rem;
   cursor: pointer;
   text-align: center;
   transition: 0.2s ease-in-out;
   user-select: none;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.curso:hover {
-  transform: scale(1.03);
+.curso:hover:not(.bloqueado) {
+  transform: scale(1.04);
+  box-shadow: 0 0 8px #b30059cc;
 }
 
 .curso.aprobado {
@@ -44,32 +73,42 @@ h1 {
 .curso.bloqueado {
   opacity: 0.4;
   cursor: not-allowed;
+  pointer-events: none;
 }
 
+/* Bordes por línea de formación */
 .linea-BaseCientifica {
   border-color: #0066cc;
 }
+
 .linea-Gestion {
   border-color: #009966;
 }
+
 .linea-Promocion {
   border-color: #cc3300;
 }
+
 .linea-Disciplinar {
   border-color: #990099;
 }
+
 .linea-General {
   border-color: #ff6600;
 }
+
 .linea-Practica {
   border-color: #3333cc;
 }
+
 .linea-Investigacion {
   border-color: #660000;
 }
+
 .linea-Interdisciplinar {
   border-color: #993300;
 }
+
 .linea-Basica {
   border-color: #999900;
 }
