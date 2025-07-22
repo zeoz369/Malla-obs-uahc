@@ -1,122 +1,88 @@
-/* Base */
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #ffe4f0;
   color: #333;
-  margin: 0;
   padding: 1rem;
 }
 
 h1 {
   text-align: center;
-  color: #b30059;
-  margin-bottom: 20px;
-}
-
-/* Contenedor principal que contiene los semestres */
-.contenedor-semestres {
-  display: flex;
-  overflow-x: auto;
-  padding-bottom: 20px;
-  gap: 12px;
-}
-
-/* Cada columna de semestre */
-.semestre {
-  background-color: #ffd6e8;
-  border-radius: 8px;
-  padding: 12px 8px 16px 8px;
-  min-width: 200px;
-  flex-shrink: 0;
-  box-shadow: 0 3px 8px rgba(179, 0, 89, 0.3);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Título del semestre */
-.semestre h2 {
-  font-size: 1.25rem;
-  color: #b30059;
-  margin-bottom: 14px;
+  color: #d6336c;
+  margin-bottom: 1rem;
   font-weight: 700;
-  text-align: center;
 }
 
-/* Cursos */
-.curso {
-  background-color: #f9c4d2;
-  border: 3px solid gray;
+.malla {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.semestre {
+  margin-bottom: 2rem;
+  border: 2px solid #d6336c;
   border-radius: 10px;
-  padding: 10px 8px;
-  font-size: 0.9rem;
+  background-color: #fff0f6;
+  padding: 1rem;
+}
+
+.semestre h2 {
+  color: #a32150;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #d6336c;
+  padding-bottom: 0.3rem;
+}
+
+.ramos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ramo {
+  background-color: #ffcce1;
+  border: 2px solid #d6336c;
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
   cursor: pointer;
-  text-align: center;
-  transition: all 0.3s ease-in-out;
+  flex: 1 1 250px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
   user-select: none;
-  margin-bottom: 10px;
-  width: 100%;
-  box-sizing: border-box;
 }
 
-.curso:hover:not(.bloqueado) {
-  transform: scale(1.04);
-  box-shadow: 0 0 8px #b30059cc;
+.ramo:hover {
+  background-color: #ffb3d1;
+  box-shadow: 0 0 8px rgba(214, 51, 108, 0.6);
 }
 
-.curso.aprobado {
-  background-color: #ffb3da;
-  text-decoration: line-through;
-  opacity: 0.6;
+.ramo.abierto {
+  background-color: #e6005c;
+  color: white;
+  font-weight: 700;
 }
 
-.curso.bloqueado {
-  opacity: 0.4;
-  cursor: not-allowed;
-  pointer-events: none;
+.ramo.abierto:hover {
+  background-color: #cc0051;
+  box-shadow: 0 0 10px rgba(204, 0, 81, 0.9);
 }
 
-/* Bordes por línea de formación */
-.linea-BaseCientifica {
-  border-color: #0066cc;
-}
-
-.linea-Gestion {
-  border-color: #009966;
-}
-
-.linea-Promocion {
-  border-color: #cc3300;
-}
-
-.linea-Disciplinar {
-  border-color: #990099;
-}
-
-.linea-General {
-  border-color: #ff6600;
-}
-
-.linea-Practica {
-  border-color: #3333cc;
-}
-
-.linea-Investigacion {
-  border-color: #660000;
-}
-
-.linea-Interdisciplinar {
-  border-color: #993300;
-}
-
-.linea-Basica {
-  border-color: #999900;
-}
-/* Scroll horizontal más visible */
-.contenedor-semestres::-webkit-scrollbar {
-  height: 8px;
-}
-.contenedor-semestres::-webkit-scrollbar-thumb {
-  background-color: #b30059;
-  border-radius: 10px;
+.subramo {
+  background-color: #ffd6e8;
+  border: 2px dashed #d6336c;
+  margin-top: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  cursor: default;
+  flex-basis: 100%;
+  user-select: none;
+  color: #a32150;
+  font-style: italic;
+  font-weight: 600;
 }
