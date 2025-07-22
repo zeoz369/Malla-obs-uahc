@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Mapa id -> nombre del curso para mostrar en subramo
   const cursosMap = {
     // Primer año
     "intro-matroneria": "Introducción a la Matronería y la Atención Humanizada",
@@ -32,112 +31,85 @@ document.addEventListener("DOMContentLoaded", () => {
     "etica-debates": "Ética y Debates Contemporáneos",
     "ingles-ii": "Inglés II",
     "ingles-iii": "Inglés III",
+    "liderazgo-gestion": "Liderazgo y Gestión para la Sustentabilidad",
 
     // Tercer año
-    "obstetricia-patologica": "Obstetricia Patológica",
     "ginecologia-planificacion": "Ginecología y Planificación Familiar",
-    "fisiopatologia": "Fisiopatología",
-    "liderazgo-gestion": "Liderazgo y Gestión para la Sustentabilidad",
-    "trabajo-equipo": "Trabajo en Equipo para la Humanización en Salud",
     "ginecologia-infanto": "Ginecología Infato Juvenil",
-    "neonatologia-fisiologica": "Neonatología Fisiológica",
-    "salud-sexual-i": "Salud Sexual y Reproductiva con Enfoque de Género I (Simbología: Prácticas Curriculares y Talleres)",
-    "bioestadistica": "Bioestadística para la Investigación",
-    "practica-tecnicas": "Práctica de Técnicas Aplicadas en Matronería",
-    "gerontologia-mujer": "Gerontología de la Mujer",
     "ginecologia-patologica": "Ginecología Patológica y Oncología",
+    "obstetricia-patologica": "Obstetricia Patológica",
+    "neonatologia-fisiologica": "Neonatología Fisiológica",
+    "neonatologia-patologica": "Neonatología Patológica",
+    "salud-sexual-i": "Salud Sexual y Reproductiva con Enfoque de Género I",
+    "salud-sexual-ii": "Salud Sexual y Reproductiva con Enfoque de Género II",
+    "bioestadistica": "Bioestadística para la Investigación",
+    "metodologia-investigacion": "Metodología de la Investigación",
+    "practica-tecnicas": "Práctica de Técnicas Aplicadas en Matronería",
     "practica-integrada-go": "Práctica Integrada de Ginecología y Obstetricia",
     "practica-integrada-aps": "Práctica Integrada de Matronería en APS y Comunidad",
-    "neonatologia-patologica": "Neonatología Patológica",
-    "salud-sexual-ii": "Salud Sexual y Reproductiva con Enfoque de Género II",
-    "metodologia-investigacion": "Metodología de la Investigación",
-    "optativo-profesional-i": "Optativo de Profesionalización I",
-    "optativo-profesional-ii": "Optativo de Profesionalización II",
-    "optativo-profesional-iii": "Optativo de Profesionalización III",
-    "gestion-liderazgo": "Gestión y Liderazgo en Matronería",
-    "climaterio-piso-pelvico": "Climaterio y Bases para el Manejo de Piso Pélvico",
     "practica-neonatologia": "Práctica de Neonatología y Puericultura",
-    "sexologia-clinica": "Sexología Clínica",
-    "seminario-grado-i": "Seminario Grado I",
-    "seminario-grado-ii": "Seminario Grado II",
     "practica-gineco-especialidades": "Práctica Gineco-Obstetricia en Especialidades en Nivel Secundario",
     "practica-obstetricia-terciario": "Práctica de Obstetricia en Nivel Terciario",
     "practica-salud-sexual": "Práctica de Salud Sexual Ambulatoria",
+    "trabajo-equipo": "Trabajo en Equipo para la Humanización en Salud",
+    "gerontologia-mujer": "Gerontología de la Mujer",
+    "gestion-liderazgo": "Gestión y Liderazgo en Matronería",
+    "climaterio-piso-pelvico": "Climaterio y Bases para el Manejo de Piso Pélvico",
+    "sexologia-clinica": "Sexología Clínica",
+    "seminario-grado-i": "Seminario Grado I",
+    "seminario-grado-ii": "Seminario Grado II",
+    "optativo-profesional-i": "Optativo de Profesionalización I",
+    "optativo-profesional-ii": "Optativo de Profesionalización II",
+    "optativo-profesional-iii": "Optativo de Profesionalización III",
+    "ultrasonografia": "Bases de Ultrasonografía en Obstetricia y Ginecología",
 
-    // Quinto año
+    // Internados
     "internado-hospitalario-i": "Internado Hospitalario Gineco-Obstétrico I",
     "internado-hospitalario-ii": "Internado Hospitalario Gineco-Obstétrico II",
     "internado-aps-i": "Internado en APS I",
     "internado-aps-ii": "Internado en APS II",
     "internado-electivo-i": "Internado Electivo de Matronería I",
-    "internado-electivo-ii": "Internado Electivo de Matronería II",
+    "internado-electivo-ii": "Internado Electivo de Matronería II"
   };
 
-  // Referencia a todos los ramos
-  const ramos = document.querySelectorAll(".ramo");
+  // Función para cerrar todos los subramos
+  function cerrarTodos() {
+    document.querySelectorAll(".ramo.abierto").forEach(r => {
+      r.classList.remove("abierto");
+      // eliminar subramo
+      const sub = r.querySelector(".subramo");
+      if (sub) sub.remove();
+    });
+  }
 
-  // Para guardar cuál subramo está abierto para cerrarlo cuando abro otro
-  let ramoAbierto = null;
+  // Al hacer click en un ramo
+  document.querySelectorAll(".ramo").forEach(ramoElem => {
+    ramoElem.addEventListener("click", () => {
+      const idRamo = ramoElem.dataset.id;
+      const abre = ramoElem.dataset.abre;
 
-  ramos.forEach(ramo => {
-    ramo.addEventListener("click", () => {
-      const abreId = ramo.getAttribute("data-abre").trim();
+      if (ramoElem.classList.contains("abierto")) {
+        // Si está abierto, cerrar
+        ramoElem.classList.remove("abierto");
+        const sub = ramoElem.querySelector(".subramo");
+        if (sub) sub.remove();
+      } else {
+        // Cerrar todos los abiertos antes
+        cerrarTodos();
 
-      // Si no abre nada, solo resaltar el ramo y cerrar cualquier abierto
-      if (!abreId) {
-        if (ramoAbierto) {
-          cerrarSubramo(ramoAbierto);
-          ramoAbierto = null;
+        // Abrir este ramo
+        ramoElem.classList.add("abierto");
+
+        if (abre) {
+          // Crear el subramo con el nombre del ramo abierto
+          const nombreSub = cursosMap[abre] || "Curso desconocido";
+          const divSub = document.createElement("div");
+          divSub.classList.add("subramo");
+          divSub.textContent = nombreSub;
+          ramoElem.appendChild(divSub);
         }
-        limpiarDestacados();
-        ramo.classList.add("abierto");
-        return;
       }
-
-      // Si ya está abierto y clickeo sobre el mismo, lo cierro
-      if (ramoAbierto === ramo) {
-        cerrarSubramo(ramoAbierto);
-        ramoAbierto = null;
-        return;
-      }
-
-      // Si otro ramo está abierto, cerrar primero
-      if (ramoAbierto) {
-        cerrarSubramo(ramoAbierto);
-      }
-
-      // Abrir nuevo subramo
-      abrirSubramo(ramo, abreId);
-      ramoAbierto = ramo;
     });
   });
 
-  // Función para limpiar estilos abiertos
-  function limpiarDestacados() {
-    ramos.forEach(r => r.classList.remove("abierto"));
-  }
-
-  // Función para abrir subramo
-  function abrirSubramo(ramo, abreId) {
-    limpiarDestacados();
-    ramo.classList.add("abierto");
-
-    // Crear contenedor subramo
-    const subramoDiv = document.createElement("div");
-    subramoDiv.classList.add("subramo");
-    subramoDiv.textContent = cursosMap[abreId] || "Nombre no disponible";
-
-    // Insertar debajo del ramo clickeado
-    ramo.insertAdjacentElement("afterend", subramoDiv);
-  }
-
-  // Función para cerrar subramo
-  function cerrarSubramo(ramo) {
-    limpiarDestacados();
-    // Eliminar el siguiente nodo si es subramo
-    const next = ramo.nextElementSibling;
-    if (next && next.classList.contains("subramo")) {
-      next.remove();
-    }
-  }
 });
