@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const cursosMap = {
-    // Primer año
+  const cursosNombres = {
     "intro-matroneria": "Introducción a la Matronería y la Atención Humanizada",
     "anatomia-general": "Anatomía general",
     "biologia-celular": "Biología Celular y Molecular",
@@ -16,8 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "salud-publica": "Salud Pública y Epidemiología",
     "ingles-i": "Inglés I",
     "estrategias-vida-ii": "Estrategias para la Vida Académica II",
-
-    // Segundo año
     "fund-enfermeria-basica": "Fundamentos de Enfermería Básica en Gineco Obstetricia",
     "tecnicas-enfermeria": "Técnicas de Enfermería Medico Quirúrgicas en Gineco-Obstetricia",
     "obstetricia-salud-familiar": "Obstetricia en Salud Familiar y Comunitaria",
@@ -32,8 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "ingles-ii": "Inglés II",
     "ingles-iii": "Inglés III",
     "liderazgo-gestion": "Liderazgo y Gestión para la Sustentabilidad",
-
-    // Tercer año
     "ginecologia-planificacion": "Ginecología y Planificación Familiar",
     "ginecologia-infanto": "Ginecología Infato Juvenil",
     "ginecologia-patologica": "Ginecología Patológica y Oncología",
@@ -62,8 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "optativo-profesional-ii": "Optativo de Profesionalización II",
     "optativo-profesional-iii": "Optativo de Profesionalización III",
     "ultrasonografia": "Bases de Ultrasonografía en Obstetricia y Ginecología",
-
-    // Internados
     "internado-hospitalario-i": "Internado Hospitalario Gineco-Obstétrico I",
     "internado-hospitalario-ii": "Internado Hospitalario Gineco-Obstétrico II",
     "internado-aps-i": "Internado en APS I",
@@ -72,41 +65,34 @@ document.addEventListener("DOMContentLoaded", () => {
     "internado-electivo-ii": "Internado Electivo de Matronería II"
   };
 
-  // Función para cerrar todos los subramos
   function cerrarTodos() {
-    document.querySelectorAll(".ramo.abierto").forEach(r => {
-      r.classList.remove("abierto");
-      // eliminar subramo
-      const sub = r.querySelector(".subramo");
+    document.querySelectorAll(".curso.abierto").forEach(c => {
+      c.classList.remove("abierto");
+      const sub = c.querySelector(".subcurso");
       if (sub) sub.remove();
     });
   }
 
-  // Al hacer click en un ramo
-  document.querySelectorAll(".ramo").forEach(ramoElem => {
-    ramoElem.addEventListener("click", () => {
-      const idRamo = ramoElem.dataset.id;
-      const abre = ramoElem.dataset.abre;
+  document.querySelectorAll(".curso").forEach(cursoElem => {
+    cursoElem.addEventListener("click", () => {
+      const id = cursoElem.dataset.id;
+      const abre = cursoElem.dataset.abre;
 
-      if (ramoElem.classList.contains("abierto")) {
-        // Si está abierto, cerrar
-        ramoElem.classList.remove("abierto");
-        const sub = ramoElem.querySelector(".subramo");
+      if (cursoElem.classList.contains("abierto")) {
+        cursoElem.classList.remove("abierto");
+        const sub = cursoElem.querySelector(".subcurso");
         if (sub) sub.remove();
       } else {
-        // Cerrar todos los abiertos antes
         cerrarTodos();
 
-        // Abrir este ramo
-        ramoElem.classList.add("abierto");
+        cursoElem.classList.add("abierto");
 
         if (abre) {
-          // Crear el subramo con el nombre del ramo abierto
-          const nombreSub = cursosMap[abre] || "Curso desconocido";
+          const nombreSub = cursosNombres[abre] || "Curso desconocido";
           const divSub = document.createElement("div");
-          divSub.classList.add("subramo");
+          divSub.classList.add("subcurso");
           divSub.textContent = nombreSub;
-          ramoElem.appendChild(divSub);
+          cursoElem.appendChild(divSub);
         }
       }
     });
