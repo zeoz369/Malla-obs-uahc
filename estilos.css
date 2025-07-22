@@ -1,68 +1,64 @@
 body {
-  font-family: 'Montserrat', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #fff;
-  color: #333;
-}
-
-header {
-  background-color: #f8d4e5;
-  color: #5a005a;
+  font-family: Arial, sans-serif;
+  background-color: #ffe6f0;
+  padding: 20px;
   text-align: center;
-  padding: 20px 10px;
-  border-bottom: 4px solid #d08abf;
 }
 
 h1 {
-  margin: 0;
-  font-size: 2rem;
+  color: #d63384;
+  margin-bottom: 40px;
 }
 
 #malla {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 10px;
-  padding: 20px;
-  max-width: 95vw;
-  margin: auto;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .curso {
-  padding: 10px;
-  background-color: #ffe6f0;
-  border: 3px solid transparent;
-  border-radius: 8px;
-  text-align: center;
+  background-color: #ffb6c1;
+  color: #000;
+  padding: 12px;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 0.9rem;
-  transition: transform 0.2s, opacity 0.2s;
+  font-weight: bold;
+  border: 3px solid transparent;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .curso:hover {
   transform: scale(1.03);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.curso.aprobado {
-  opacity: 1;
-  background-color: #f9d6eb;
-  box-shadow: 0 0 5px #a14a88;
+.aprobado {
+  background-color: #c3e6cb !important;
+  color: #155724;
+  text-decoration: line-through;
 }
 
-.curso.bloqueado {
-  opacity: 0.4;
+.bloqueado {
+  background-color: #f8d7da !important;
+  color: #721c24;
   cursor: not-allowed;
 }
 
+/* Colores de borde por línea */
 .color-formacion {
-  border-color: #6ec1e4;
+  border-color: #007bff;
 }
+
 .color-disciplinar {
-  border-color: #f9a825;
+  border-color: #28a745;
 }
+
 .color-profesional {
-  border-color: #ab47bc;
+  border-color: #17a2b8;
 }
+
 .color-sello {
-  border-color: #ef5350;
+  border-color: #ffc107;
 }
