@@ -1,4 +1,4 @@
-/* Reset básico */
+/* Reset */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,83 +6,85 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Arial, sans-serif;
   background-color: #ffe4f0;
-  color: #333;
+  color: #3d3d3d;
   padding: 1rem;
+  overflow-x: auto;
 }
 
 h1 {
   text-align: center;
-  color: #d6336c;
-  margin-bottom: 1rem;
-  font-weight: 700;
+  color: #c2185b;
+  margin-bottom: 1.5rem;
 }
 
-.malla {
-  max-width: 1200px;
-  margin: 0 auto;
+#malla-container {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
 }
 
-.semestre {
-  margin-bottom: 2rem;
-  border: 2px solid #d6336c;
-  border-radius: 10px;
-  background-color: #fff0f6;
+.columna-semestre {
+  background: #fff0f6;
+  border: 3px solid #c2185b;
+  border-radius: 12px;
   padding: 1rem;
+  min-width: 250px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
-.semestre h2 {
-  color: #a32150;
+.columna-semestre h2 {
+  color: #880e4f;
+  font-weight: 700;
   margin-bottom: 1rem;
-  border-bottom: 1px solid #d6336c;
-  padding-bottom: 0.3rem;
+  text-align: center;
+  font-size: 1.15rem;
+  border-bottom: 2px solid #c2185b;
+  padding-bottom: 0.5rem;
 }
 
 .ramos {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-direction: column;
+  gap: 0.8rem;
 }
 
 .ramo {
-  background-color: #ffcce1;
-  border: 2px solid #d6336c;
+  background-color: #ffb6c1;
+  border: 2.5px solid #c2185b;
   border-radius: 8px;
-  padding: 0.8rem 1rem;
+  padding: 0.9rem 1rem;
+  font-weight: 600;
+  color: #4a0033;
   cursor: pointer;
-  flex: 1 1 250px;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
   user-select: none;
+  transition: background-color 0.3s ease;
 }
 
 .ramo:hover {
-  background-color: #ffb3d1;
-  box-shadow: 0 0 8px rgba(214, 51, 108, 0.6);
+  background-color: #ff8aa4;
 }
 
 .ramo.abierto {
-  background-color: #e6005c;
+  background-color: #a31547;
   color: white;
   font-weight: 700;
 }
 
-.ramo.abierto:hover {
-  background-color: #cc0051;
-  box-shadow: 0 0 10px rgba(204, 0, 81, 0.9);
-}
-
 .subramo {
-  background-color: #ffd6e8;
-  border: 2px dashed #d6336c;
   margin-top: 0.5rem;
-  padding: 0.6rem 0.8rem;
+  background: #ffd6e8;
+  border: 2px dashed #c2185b;
   border-radius: 6px;
-  cursor: default;
-  flex-basis: 100%;
-  user-select: none;
-  color: #a32150;
+  padding: 0.6rem 1rem;
   font-style: italic;
+  color: #6b0e38;
+  user-select: none;
   font-weight: 600;
 }
