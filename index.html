@@ -2,121 +2,17 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Malla Obstetricia UAHC</title>
   <link rel="stylesheet" href="estilos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Malla de Obstetricia y Matronería - UAHC</h1>
-  <div class="malla">
+  <header>
+    <h1>Malla Obstetricia y Matronería - UAHC</h1>
+  </header>
 
-    <!-- Primer Año -->
-    <div class="semestre">
-      <h3>1° Año - I Semestre</h3>
-      <button class="ramo" data-id="intro_matroneria" data-prerequisitos="" data-linea="Gestión de Matronería en el Curso de la Vida">Introducción a la Matronería y la Atención Humanizada</button>
-      <button class="ramo" data-id="anat_gen" data-prerequisitos="" data-linea="Bases Científicas para la salud">Anatomía general</button>
-      <button class="ramo" data-id="bio_cel" data-prerequisitos="" data-linea="Bases Científicas para la salud">Biología Celular y Molecular</button>
-      <button class="ramo" data-id="quimica" data-prerequisitos="" data-linea="Bases Científicas para la salud">Química General</button>
-      <button class="ramo" data-id="antro_salud" data-prerequisitos="" data-linea="Promoción de la Salud Sexual y Reproductiva">Antropología de la Salud</button>
-      <button class="ramo" data-id="eva1" data-prerequisitos="" data-linea="Gestión de Matronería en el Curso de la Vida">Estrategias para la Vida Académica I</button>
-    </div>
-
-    <div class="semestre">
-      <h3>1° Año - II Semestre</h3>
-      <button class="ramo" data-id="anat_esp" data-prerequisitos="anat_gen" data-linea="Gestión de Matronería en el Curso de la Vida">Anatomía Específica Gineco-obstétrica y Neonatal</button>
-      <button class="ramo" data-id="micro" data-prerequisitos="bio_cel" data-linea="Bases Científicas para la salud">Microbiología Aplicada y Parasitología</button>
-      <button class="ramo" data-id="emb_histo" data-prerequisitos="" data-linea="Bases Científicas para la salud">Embriología Humana e Histología</button>
-      <button class="ramo" data-id="psico_general" data-prerequisitos="" data-linea="Promoción de la Salud Sexual y Reproductiva">Psicología General en el Curso de la Vida</button>
-      <button class="ramo" data-id="bioquimica" data-prerequisitos="quimica" data-linea="Bases Científicas para la salud">Bioquímica</button>
-      <button class="ramo" data-id="salud_pub" data-prerequisitos="" data-linea="Promoción de la Salud Sexual y Reproductiva">Salud Pública y Epidemiología</button>
-      <button class="ramo" data-id="ingles1" data-prerequisitos="" data-linea="Bases Científicas para la salud">Inglés I</button>
-      <button class="ramo" data-id="eva2" data-prerequisitos="eva1" data-linea="Gestión de Matronería en el Curso de la Vida">Estrategias para la Vida Académica II</button>
-    </div>
-
-    <!-- Segundo Año -->
-    <div class="semestre">
-      <h3>2° Año - III Semestre</h3>
-      <button class="ramo" data-id="fund_enf_basica" data-prerequisitos="" data-linea="Gestión de Matronería en el Curso de la Vida">Fundamentos de Enfermería Básica en Gineco Obstetricia</button>
-      <button class="ramo" data-id="obst_salud_fam" data-prerequisitos="" data-linea="Gestión de Matronería en el Curso de la Vida">Obstetricia en Salud Familiar y Comunitaria</button>
-      <button class="ramo" data-id="psico_mujer" data-prerequisitos="" data-linea="Promoción de la Salud Sexual y Reproductiva">Psicología de la Mujer</button>
-      <button class="ramo" data-id="fisio" data-prerequisitos="" data-linea="Bases Científicas para la salud">Fisiología</button>
-      <button class="ramo" data-id="prim_aux" data-prerequisitos="" data-linea="Bases Científicas para la salud">Primeros Auxilios y Prevención de Riesgos</button>
-      <button class="ramo" data-id="salud_colectiva" data-prerequisitos="" data-linea="Gestión de Matronería en el Curso de la Vida">Salud Colectiva para la Vida Sustentable</button>
-      <button class="ramo" data-id="derechos_humanos" data-prerequisitos="" data-linea="Promoción de la Salud Sexual y Reproductiva">Derechos Humanos, Géneros e Interculturalidad</button>
-      <button class="ramo" data-id="ingles2" data-prerequisitos="ingles1" data-linea="Bases Científicas para la salud">Inglés II</button>
-    </div>
-
-    <div class="semestre">
-      <h3>2° Año - IV Semestre</h3>
-      <button class="ramo" data-id="tecn_enf" data-prerequisitos="fund_enf_basica" data-linea="Gestión de Matronería en el Curso de la Vida">Técnicas de Enfermería Medico Quirúrgicas en Gineco-Obstetricia</button>
-      <button class="ramo" data-id="obst_fisio" data-prerequisitos="obst_salud_fam" data-linea="Gestión de Matronería en el Curso de la Vida">Obstetricia Fisiológica</button>
-      <button class="ramo" data-id="ginec_planif" data-prerequisitos="" data-linea="Promoción de la Salud Sexual y Reproductiva">Ginecología y Planificación Familiar</button>
-      <button class="ramo" data-id="fisiopato" data-prerequisitos="fisio" data-linea="Bases Científicas para la salud">Fisiopatología</button>
-      <button class="ramo" data-id="farmaco" data-prerequisitos="prim_aux" data-linea="Bases Científicas para la salud">Farmacología General y Fundamentos de Administración Segura</button>
-      <button class="ramo" data-id="liderazgo" data-prerequisitos="" data-linea="Gestión de Matronería en el Curso de la Vida">Liderazgo y Gestión para la Sustentabilidad</button>
-      <button class="ramo" data-id="etica" data-prerequisitos="derechos_humanos" data-linea="Promoción de la Salud Sexual y Reproductiva">Ética y Debates Contemporáneos</button>
-      <button class="ramo" data-id="ingles3" data-prerequisitos="ingles2" data-linea="Bases Científicas para la salud">Inglés III</button>
-    </div>
-
-    <!-- Tercer Año -->
-    <div class="semestre">
-      <h3>3° Año - V Semestre</h3>
-      <button class="ramo" data-id="trab_equipo" data-prerequisitos="" data-linea="Gestión de Matronería en el Curso de la Vida">Trabajo en Equipo para la Humanización en Salud</button>
-      <button class="ramo" data-id="ginec_infanto" data-prerequisitos="" data-linea="Gestión de Matronería en el Curso de la Vida">Ginecología Infanto Juvenil</button>
-      <button class="ramo" data-id="obst_patologica" data-prerequisitos="obst_fisio" data-linea="Gestión de Matronería en el Curso de la Vida">Obstetricia Patológica</button>
-      <button class="ramo" data-id="neonat_fisio" data-prerequisitos="" data-linea="Gestión de Matronería en el Curso de la Vida">Neonatología Fisiológica</button>
-      <button class="ramo" data-id="salud_gen" data-prerequisitos="" data-linea="Promoción de la Salud Sexual y Reproductiva">Salud Sexual y Reproductiva con Enfoque de Género I</button>
-      <button class="ramo" data-id="bioestadistica" data-prerequisitos="" data-linea="Investigación en el Ámbito Disciplinar">Bioestadística para la Investigación</button>
-      <button class="ramo" data-id="practicas_tec_aplicadas" data-prerequisitos="" data-linea="Prácticas Curriculares y Profesionales">Práctica de Técnicas Aplicadas en Matronería</button>
-    </div>
-
-    <div class="semestre">
-      <h3>3° Año - VI Semestre</h3>
-      <button class="ramo" data-id="gerontologia" data-prerequisitos="" data-linea="Gestión de Matronería en el Curso de la Vida">Gerontología de la Mujer</button>
-      <button class="ramo" data-id="ginec_pat_onco" data-prerequisitos="ginec_infanto" data-linea="Gestión de Matronería en el Curso de la Vida">Ginecología Patológica y Oncología</button>
-      <button class="ramo" data-id="practica_ginec_obs" data-prerequisitos="obst_patologica" data-linea="Prácticas Curriculares y Profesionales">Práctica Integrada de Ginecología y Obstetricia</button>
-      <button class="ramo" data-id="neonat_patologica" data-prerequisitos="neonat_fisio" data-linea="Gestión de Matronería en el Curso de la Vida">Neonatología Patológica</button>
-      <button class="ramo" data-id="salud_gen2" data-prerequisitos="salud_gen" data-linea="Promoción de la Salud Sexual y Reproductiva">Salud Sexual y Reproductiva con Enfoque de Género II</button>
-      <button class="ramo" data-id="metodologia_inv" data-prerequisitos="bioestadistica" data-linea="Investigación en el Ámbito Disciplinar">Metodología de la Investigación</button>
-      <button class="ramo" data-id="optativo1" data-prerequisitos="" data-linea="Investigación en el Ámbito Disciplinar">Optativo de Profesionalización I</button>
-    </div>
-
-    <!-- Cuarto Año -->
-    <div class="semestre">
-      <h3>4° Año - VII Semestre</h3>
-      <button class="ramo" data-id="gestion_liderazgo" data-prerequisitos="" data-linea="Gestión de Matronería en el Curso de la Vida">Gestión y Liderazgo en Matronería</button>
-      <button class="ramo" data-id="climaterio" data-prerequisitos="" data-linea="Gestión de Matronería en el Curso de la Vida">Climaterio y Bases para el Manejo de Piso Pélvico</button>
-      <button class="ramo" data-id="practica_integrada_aps" data-prerequisitos="practica_ginec_obs" data-linea="Prácticas Curriculares y Profesionales">Práctica Integrada de Matronería en APS y Comunidad</button>
-      <button class="ramo" data-id="practica_neonatologia" data-prerequisitos="" data-linea="Prácticas Curriculares y Profesionales">Práctica de Neonatología y Puericultura</button>
-      <button class="ramo" data-id="sexologia_clinica" data-prerequisitos="" data-linea="Promoción de la Salud Sexual y Reproductiva">Sexología Clínica</button>
-      <button class="ramo" data-id="seminario1" data-prerequisitos="" data-linea="Investigación en el Ámbito Disciplinar">Seminario Grado I</button>
-      <button class="ramo" data-id="optativo2" data-prerequisitos="optativo1" data-linea="Investigación en el Ámbito Disciplinar">Optativo de Profesionalización II</button>
-    </div>
-
-    <div class="semestre">
-      <h3>4° Año - VIII Semestre</h3>
-      <button class="ramo" data-id="ultrasonografia" data-prerequisitos="" data-linea="Gestión de Matronería en el Curso de la Vida">Bases de Ultrasonografía en Obstetricia y Ginecología</button>
-      <button class="ramo" data-id="practica_gineco_secundario" data-prerequisitos="practica_integrada_aps" data-linea="Prácticas Curriculares y Profesionales">Práctica Gineco-Obstetricia en Especialidades en Nivel Secundario</button>
-      <button class="ramo" data-id="practica_obst_terciario" data-prerequisitos="practica_integrada_aps" data-linea="Prácticas Curriculares y Profesionales">Práctica de Obstetricia en Nivel Terciario</button>
-      <button class="ramo" data-id="practica_salud_sexual" data-prerequisitos="practica_integrada_aps" data-linea="Prácticas Curriculares y Profesionales">Práctica de Salud Sexual Ambulatoria</button>
-      <button class="ramo" data-id="seminario2" data-prerequisitos="seminario1" data-linea="Investigación en el Ámbito Disciplinar">Seminario Grado II</button>
-      <button class="ramo" data-id="optativo3" data-prerequisitos="optativo2" data-linea="Investigación en el Ámbito Disciplinar">Optativo de Profesionalización III</button>
-    </div>
-
-    <!-- Quinto Año -->
-    <div class="semestre">
-      <h3>5° Año - IX Semestre</h3>
-      <button class="ramo" data-id="internado_hosp_gineco_i" data-prerequisitos="" data-linea="Prácticas Curriculares y Profesionales">Internado Hospitalario Gineco-Obstétrico I</button>
-      <button class="ramo" data-id="internado_aps_i" data-prerequisitos="" data-linea="Prácticas Curriculares y Profesionales">Internado en APS I</button>
-      <button class="ramo" data-id="internado_electivo_i" data-prerequisitos="" data-linea="Prácticas Curriculares y Profesionales">Internado Electivo de Matronería I</button>
-    </div>
-
-    <div class="semestre">
-      <h3>5° Año - X Semestre</h3>
-      <button class="ramo" data-id="internado_hosp_gineco_ii" data-prerequisitos="internado_hosp_gineco_i" data-linea="Prácticas Curriculares y Profesionales">Internado Hospitalario Gineco-Obstétrico II</button>
-      <button class="ramo" data-id="internado_aps_ii" data-prerequisitos="internado_aps_i" data-linea="Prácticas Curriculares y Profesionales">Internado en APS II</button>
-      <button class="ramo" data-id="internado_electivo_ii" data-prerequisitos="internado_electivo_i" data-linea="Prácticas Curriculares y Profesionales">Internado Electivo de Matronería II</button>
-    </div>
+  <main id="malla"></main>
 
   <script src="script.js"></script>
 </body>
