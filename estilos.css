@@ -1,134 +1,69 @@
 body {
-  font-family: Arial, sans-serif;
-  background: #ffe6f0;
-  padding: 20px;
-  text-align: center;
+  font-family: 'Montserrat', sans-serif;
   margin: 0;
+  padding: 0;
+  background-color: #fff;
+  color: #333;
+}
+
+header {
+  background-color: #f8d4e5;
+  color: #5a005a;
+  text-align: center;
+  padding: 20px 10px;
+  border-bottom: 4px solid #d08abf;
 }
 
 h1 {
-  color: #d63384;
-  margin-bottom: 20px;
-}
-
-.malla {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  padding-bottom: 20px;
-}
-
-.semestre {
-  display: flex;
-  flex-direction: column;
-  min-width: 280px;
-  background: #fff0f7;
-  padding: 15px;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(214, 51, 132, 0.15);
-  max-height: 80vh;
-  overflow-y: auto;
-}
-
-.semestre h3 {
-  margin-top: 0;
-  margin-bottom: 15px;
-  color: #b02363;
-  font-size: 1.2em;
-  text-align: center;
-}
-
-/* Botones */
-.ramo {
-  border: 3px solid transparent;
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 8px;
-  cursor: pointer;
-  color: #333;
-  font-weight: 600;
-  background-color: #ffe6f0; /* Fondo rosa claro para todos */
-  text-align: left;
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-}
-
-/* Estados */
-.ramo:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-
-/* Aprobado */
-.ramo.aprobado {
-  background-color: #d63384 !important; /* Rosa fuerte */
-  color: white;
-  text-decoration: line-through;
-  border-color: #b02363 !important;
-}
-
-/* Bordes por línea de formación */
-
-.ramo[data-linea="Bases Científicas para la salud"] {
-  border-color: #fcde98;
-}
-
-.ramo[data-linea="Gestión de Matronería en el Curso de la Vida"] {
-  border-color: #f6f77c;
-}
-
-.ramo[data-linea="Promoción de la Salud Sexual y Reproductiva"] {
-  border-color: #a1ff80;
-}
-
-.ramo[data-linea="Investigación en el Ámbito Disciplinar"] {
-  border-color: #d2fffb;
-}
-
-.ramo[data-linea="Prácticas Curriculares y Profesionales"] {
-  border-color: #ffd7f0;
-}
-
-.ramo[data-linea="Certificado en Salud con Enfoque Territorial"] {
-  border-color: #f1baff;
-}
-
-.ramo[data-linea="Certificado Gestión y Liderazgo en Matronería"] {
-  border-color: #ff37b6;
-  color: #333;
-}
-
-.ramo[data-linea="Certificado Profesionalízate"] {
-  border-color: #9aff00;
-}
-
-/* Leyenda */
-.leyenda {
-  margin-top: 40px;
-  text-align: left;
-  display: inline-block;
-  background: white;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(214, 51, 132, 0.3);
-  max-width: 800px;
-}
-
-.leyenda ul {
-  list-style: none;
-  padding-left: 0;
   margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  font-size: 2rem;
 }
 
-.leyenda li {
-  padding: 8px 15px;
+#malla {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 10px;
+  padding: 20px;
+  max-width: 95vw;
+  margin: auto;
+}
+
+.curso {
+  padding: 10px;
+  background-color: #ffe6f0;
+  border: 3px solid transparent;
   border-radius: 8px;
-  color: black;
-  font-weight: bold;
-  flex: 1 1 calc(25% - 10px);
   text-align: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.curso:hover {
+  transform: scale(1.03);
+}
+
+.curso.aprobado {
+  opacity: 1;
+  background-color: #f9d6eb;
+  box-shadow: 0 0 5px #a14a88;
+}
+
+.curso.bloqueado {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Bordes por línea de formación: mantén los colores existentes */
+.color-formacion {
+  border-color: #6ec1e4;
+}
+.color-disciplinar {
+  border-color: #f9a825;
+}
+.color-profesional {
+  border-color: #ab47bc;
+}
+.color-sello {
+  border-color: #ef5350;
 }
