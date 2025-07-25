@@ -1,24 +1,24 @@
 document.addEventListener('DOMContentLoaded', function() {
     const courses = document.querySelectorAll('.course');
     const resetBtn = document.getElementById('reset-btn');
-    const progressBar = document.getElementById('progress-bar');
+    const progress = document.getElementById('progress');
     const progressText = document.getElementById('progress-text');
     const totalCourses = courses.length;
     let completedCourses = 0;
 
-    // Inicializar el estado de los cursos
+    // Inicializar cursos
     function initializeCourses() {
         completedCourses = 0;
         
         courses.forEach(course => {
-            // Verificar si el curso está completado en localStorage
+            // Verificar estado en localStorage
             const isCompleted = localStorage.getItem(course.dataset.id) === 'completed';
             
             if (isCompleted) {
                 course.classList.add('completed');
                 completedCourses++;
                 
-                // Desbloquear cursos que este curso desbloquea
+                // Desbloquear cursos dependientes
                 const unlocks = course.dataset.unlocks;
                 if (unlocks) {
                     unlocks.split(' ').forEach(id => {
@@ -28,15 +28,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     });
                 }
-            } else {
-                course.classList.remove('completed');
             }
             
-            // Verificar requisitos para bloquear/desbloquear
+            // Verificar requisitos
             const requires = course.dataset.requires;
             if (requires) {
-                const requiredCourses = requires.split(' ');
-                const allRequiredCompleted = requiredCourses.every(id => {
+                const requiredIds = requires.split(' ');
+                const allRequiredCompleted = requiredIds.every(id => {
                     const requiredCourse = document.querySelector(`[data-id="${id}"]`);
                     return requiredCourse && requiredCourse.classList.contains('completed');
                 });
@@ -52,29 +50,31 @@ document.addEventListener('DOMContentLoaded', function() {
         updateProgress();
     }
 
-    // Actualizar la barra de progreso
+    // Actualizar progreso
     function updateProgress() {
         const percentage = Math.round((completedCourses / totalCourses) * 100);
-        progressBar.style.width = `${percentage}%`;
-        progressText.textContent = `${percentage}% completado`;
+        progress.style.width = `${percentage}%`;
+        progressText.textContent = `${percentage}%`;
     }
 
-    // Manejar clic en un curso
+    // Manejar clic en curso
     function handleCourseClick(e) {
         const course = e.currentTarget;
         
         if (course.classList.contains('locked')) return;
         
         if (course.classList.contains('completed')) {
+            // Desmarcar como completado
             course.classList.remove('completed');
             localStorage.removeItem(course.dataset.id);
             completedCourses--;
         } else {
+            // Marcar como completado
             course.classList.add('completed');
             localStorage.setItem(course.dataset.id, 'completed');
             completedCourses++;
             
-            // Desbloquear cursos que este curso desbloquea
+            // Desbloquear cursos dependientes
             const unlocks = course.dataset.unlocks;
             if (unlocks) {
                 unlocks.split(' ').forEach(id => {
@@ -90,8 +90,8 @@ document.addEventListener('DOMContentLoaded', function() {
         courses.forEach(c => {
             const requires = c.dataset.requires;
             if (requires) {
-                const requiredCourses = requires.split(' ');
-                const allRequiredCompleted = requiredCourses.every(id => {
+                const requiredIds = requires.split(' ');
+                const allRequiredCompleted = requiredIds.every(id => {
                     const requiredCourse = document.querySelector(`[data-id="${id}"]`);
                     return requiredCourse && requiredCourse.classList.contains('completed');
                 });
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateProgress();
     }
 
-    // Reiniciar toda la malla
+    // Reiniciar malla
     function resetMalla() {
         if (confirm('¿Estás seguro de que quieres reiniciar toda la malla? Se borrarán todos tus avances.')) {
             courses.forEach(course => {
