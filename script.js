@@ -1,101 +1,130 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', function() {
+    const courses = document.querySelectorAll('.course');
+    const resetBtn = document.getElementById('reset-btn');
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+    const totalCourses = courses.length;
+    let completedCourses = 0;
 
-  const cursosNombres = {
-    "intro-matroneria": "Introducción a la Matronería y la Atención Humanizada",
-    "anatomia-general": "Anatomía general",
-    "biologia-celular": "Biología Celular y Molecular",
-    "quimica-general": "Química General",
-    "antropologia-salud": "Antropología de la Salud",
-    "estrategias-vida-i": "Estrategias para la Vida Académica I",
-    "anatomia-especifica": "Anatomía Específica Gineco-obtétrica y Neonatal",
-    "microbiologia-aplicada": "Microbiología Aplicada y Parasitología",
-    "embriologia-histologia": "Embriología Humana e Histología",
-    "psicologia-general": "Psicología General en el Curso de la Vida",
-    "bioquimica": "Bioquímica (Simbología: Laboratorio)",
-    "salud-publica": "Salud Pública y Epidemiología",
-    "ingles-i": "Inglés I",
-    "estrategias-vida-ii": "Estrategias para la Vida Académica II",
-    "fund-enfermeria-basica": "Fundamentos de Enfermería Básica en Gineco Obstetricia",
-    "tecnicas-enfermeria": "Técnicas de Enfermería Medico Quirúrgicas en Gineco-Obstetricia",
-    "obstetricia-salud-familiar": "Obstetricia en Salud Familiar y Comunitaria",
-    "obstetricia-fisiologica": "Obstetricia Fisiológica",
-    "psicologia-mujer": "Psicología de la Mujer",
-    "fisiologia": "Fisiología",
-    "primeros-auxilios": "Primeros Auxilios y Prevención de Riesgos",
-    "farmacologia-general": "Farmacología General y Fundamentos de Administración Segura",
-    "salud-colectiva": "Salud Colectiva para la Vida Sustentable",
-    "derechos-humanos": "Derechos Humanos, Géneros e Interculturalidad",
-    "etica-debates": "Ética y Debates Contemporáneos",
-    "ingles-ii": "Inglés II",
-    "ingles-iii": "Inglés III",
-    "liderazgo-gestion": "Liderazgo y Gestión para la Sustentabilidad",
-    "ginecologia-planificacion": "Ginecología y Planificación Familiar",
-    "ginecologia-infanto": "Ginecología Infato Juvenil",
-    "ginecologia-patologica": "Ginecología Patológica y Oncología",
-    "obstetricia-patologica": "Obstetricia Patológica",
-    "neonatologia-fisiologica": "Neonatología Fisiológica",
-    "neonatologia-patologica": "Neonatología Patológica",
-    "salud-sexual-i": "Salud Sexual y Reproductiva con Enfoque de Género I",
-    "salud-sexual-ii": "Salud Sexual y Reproductiva con Enfoque de Género II",
-    "bioestadistica": "Bioestadística para la Investigación",
-    "metodologia-investigacion": "Metodología de la Investigación",
-    "practica-tecnicas": "Práctica de Técnicas Aplicadas en Matronería",
-    "practica-integrada-go": "Práctica Integrada de Ginecología y Obstetricia",
-    "practica-integrada-aps": "Práctica Integrada de Matronería en APS y Comunidad",
-    "practica-neonatologia": "Práctica de Neonatología y Puericultura",
-    "practica-gineco-especialidades": "Práctica Gineco-Obstetricia en Especialidades en Nivel Secundario",
-    "practica-obstetricia-terciario": "Práctica de Obstetricia en Nivel Terciario",
-    "practica-salud-sexual": "Práctica de Salud Sexual Ambulatoria",
-    "trabajo-equipo": "Trabajo en Equipo para la Humanización en Salud",
-    "gerontologia-mujer": "Gerontología de la Mujer",
-    "gestion-liderazgo": "Gestión y Liderazgo en Matronería",
-    "climaterio-piso-pelvico": "Climaterio y Bases para el Manejo de Piso Pélvico",
-    "sexologia-clinica": "Sexología Clínica",
-    "seminario-grado-i": "Seminario Grado I",
-    "seminario-grado-ii": "Seminario Grado II",
-    "optativo-profesional-i": "Optativo de Profesionalización I",
-    "optativo-profesional-ii": "Optativo de Profesionalización II",
-    "optativo-profesional-iii": "Optativo de Profesionalización III",
-    "ultrasonografia": "Bases de Ultrasonografía en Obstetricia y Ginecología",
-    "internado-hospitalario-i": "Internado Hospitalario Gineco-Obstétrico I",
-    "internado-hospitalario-ii": "Internado Hospitalario Gineco-Obstétrico II",
-    "internado-aps-i": "Internado en APS I",
-    "internado-aps-ii": "Internado en APS II",
-    "internado-electivo-i": "Internado Electivo de Matronería I",
-    "internado-electivo-ii": "Internado Electivo de Matronería II"
-  };
+    // Inicializar el estado de los cursos
+    function initializeCourses() {
+        completedCourses = 0;
+        
+        courses.forEach(course => {
+            // Verificar si el curso está completado en localStorage
+            const isCompleted = localStorage.getItem(course.dataset.id) === 'completed';
+            
+            if (isCompleted) {
+                course.classList.add('completed');
+                completedCourses++;
+                
+                // Desbloquear cursos que este curso desbloquea
+                const unlocks = course.dataset.unlocks;
+                if (unlocks) {
+                    unlocks.split(' ').forEach(id => {
+                        const unlockedCourse = document.querySelector(`[data-id="${id}"]`);
+                        if (unlockedCourse) {
+                            unlockedCourse.classList.remove('locked');
+                        }
+                    });
+                }
+            } else {
+                course.classList.remove('completed');
+            }
+            
+            // Verificar requisitos para bloquear/desbloquear
+            const requires = course.dataset.requires;
+            if (requires) {
+                const requiredCourses = requires.split(' ');
+                const allRequiredCompleted = requiredCourses.every(id => {
+                    const requiredCourse = document.querySelector(`[data-id="${id}"]`);
+                    return requiredCourse && requiredCourse.classList.contains('completed');
+                });
+                
+                if (!allRequiredCompleted && !course.classList.contains('completed')) {
+                    course.classList.add('locked');
+                } else {
+                    course.classList.remove('locked');
+                }
+            }
+        });
+        
+        updateProgress();
+    }
 
-  function cerrarTodos() {
-    document.querySelectorAll(".curso.abierto").forEach(c => {
-      c.classList.remove("abierto");
-      const sub = c.querySelector(".subcurso");
-      if (sub) sub.remove();
-    });
-  }
+    // Actualizar la barra de progreso
+    function updateProgress() {
+        const percentage = Math.round((completedCourses / totalCourses) * 100);
+        progressBar.style.width = `${percentage}%`;
+        progressText.textContent = `${percentage}% completado`;
+    }
 
-  document.querySelectorAll(".curso").forEach(cursoElem => {
-    cursoElem.addEventListener("click", () => {
-      const id = cursoElem.dataset.id;
-      const abre = cursoElem.dataset.abre;
-
-      if (cursoElem.classList.contains("abierto")) {
-        cursoElem.classList.remove("abierto");
-        const sub = cursoElem.querySelector(".subcurso");
-        if (sub) sub.remove();
-      } else {
-        cerrarTodos();
-
-        cursoElem.classList.add("abierto");
-
-        if (abre) {
-          const nombreSub = cursosNombres[abre] || "Curso desconocido";
-          const divSub = document.createElement("div");
-          divSub.classList.add("subcurso");
-          divSub.textContent = nombreSub;
-          cursoElem.appendChild(divSub);
+    // Manejar clic en un curso
+    function handleCourseClick(e) {
+        const course = e.currentTarget;
+        
+        if (course.classList.contains('locked')) return;
+        
+        if (course.classList.contains('completed')) {
+            course.classList.remove('completed');
+            localStorage.removeItem(course.dataset.id);
+            completedCourses--;
+        } else {
+            course.classList.add('completed');
+            localStorage.setItem(course.dataset.id, 'completed');
+            completedCourses++;
+            
+            // Desbloquear cursos que este curso desbloquea
+            const unlocks = course.dataset.unlocks;
+            if (unlocks) {
+                unlocks.split(' ').forEach(id => {
+                    const unlockedCourse = document.querySelector(`[data-id="${id}"]`);
+                    if (unlockedCourse) {
+                        unlockedCourse.classList.remove('locked');
+                    }
+                });
+            }
         }
-      }
-    });
-  });
+        
+        // Actualizar estado de cursos dependientes
+        courses.forEach(c => {
+            const requires = c.dataset.requires;
+            if (requires) {
+                const requiredCourses = requires.split(' ');
+                const allRequiredCompleted = requiredCourses.every(id => {
+                    const requiredCourse = document.querySelector(`[data-id="${id}"]`);
+                    return requiredCourse && requiredCourse.classList.contains('completed');
+                });
+                
+                if (!allRequiredCompleted && !c.classList.contains('completed')) {
+                    c.classList.add('locked');
+                } else {
+                    c.classList.remove('locked');
+                }
+            }
+        });
+        
+        updateProgress();
+    }
 
+    // Reiniciar toda la malla
+    function resetMalla() {
+        if (confirm('¿Estás seguro de que quieres reiniciar toda la malla? Se borrarán todos tus avances.')) {
+            courses.forEach(course => {
+                course.classList.remove('completed');
+                localStorage.removeItem(course.dataset.id);
+            });
+            initializeCourses();
+        }
+    }
+
+    // Event listeners
+    courses.forEach(course => {
+        course.addEventListener('click', handleCourseClick);
+    });
+    
+    resetBtn.addEventListener('click', resetMalla);
+
+    // Inicializar
+    initializeCourses();
 });
